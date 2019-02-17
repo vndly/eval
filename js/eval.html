@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Types</title>
+		<script type="text/javascript">
+			
+			/*
+				Types:
+					Boolean
+					Number
+					String
+					[]
+
+				Todo:
+					Generics	T Element([T] l Number i) = ...
+					Tuples		Person: {Number Boolean}
+					Functions	[B] Map([A] a <A B> f) = ...
+
+				-------------------------------------
+
+				Number Factorial(Number n) = If(Equal(n 0) 1 Mul(n Factorial(Subtract(n 1))))
+
+				Number Factorial(Number n) =
+					If(
+						Equal(
+							n 0
+						)
+						1
+						Mul(
+							n
+							Factorial(
+								Subtract(
+									n 1
+								)
+							)
+						)
+					)
+			*/
+ 
+			/*
+				try
+		        {
+		            ScriptEngineManager manager = new ScriptEngineManager();
+		            ScriptEngine engine = manager.getEngineByName("javascript");
+		            Object result = engine.eval("");
+		            System.out.println(result.toString());
+		        }
+		        catch (Exception e)
+		        {
+		            e.printStackTrace();
+		        }
+			*/
+
+			function run()
+			{
+				var result = new Factorial(new Num(5))
+				document.write(result.value())
+				console.log(result.value())
+			}
+
+			function Num(n)
+			{
+				this.value = function()
+				{
+					return n
+				}
+			}
+
+			function Bool(b)
+			{
+				this.value = function()
+				{
+					return b
+				}
+			}
+
+			function Mul(a, b)
+			{
+				this.value = function()
+				{
+					return a.value() * b.value()
+				}
+			}
+
+			function Sub(a, b)
+			{
+				this.value = function()
+				{
+					return a.value() - b.value()
+				}
+			}
+
+			function Equal(a, b)
+			{
+				this.value = function()
+				{
+					return a.value() === b.value()
+				}
+			}
+
+			function If(a, b, c)
+			{
+				this.value = function()
+				{
+					return a.value() ? b.value() : c.value()
+				}
+			}
+
+			function Factorial(n)
+			{
+				this.value = function()
+				{
+					return new If(
+		                    new Equal(n, new Num(0)),
+		                    new Num(1),
+		                    new Mul(
+		                            n,
+		                            new Factorial(
+		                                    new Sub(n, new Num(1))
+		                            )
+		                    )
+		            ).value()
+				}
+			}
+
+		</script>
+	</head>
+	<body onload="run()">
+	</body>
+</html>
