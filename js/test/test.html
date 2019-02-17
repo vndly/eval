@@ -13,8 +13,9 @@
 
 			function run()
 			{
-				math()
+				comp()
 				bool()
+				math()
 				list()
 			}
 
@@ -43,6 +44,31 @@
 
 				var or = new Or(true, false)
 				check(or, true)
+
+				console.log('')
+			}
+
+			function comp()
+			{
+			    console.log('Comp')
+
+			    var equal = new Equal(3, 4)
+				check(equal, false)
+
+				var notEqual = new NotEqual(3, 4)
+				check(notEqual, true)
+
+				var lessThan = new LessThan(3, 4)
+				check(lessThan, true)
+
+				var lessEqual = new LessEqual(3, 4)
+				check(lessEqual, true)
+
+				var greaterThan = new GreaterThan(3, 4)
+				check(greaterThan, false)
+
+				var greaterEqual = new GreaterEqual(3, 4)
+				check(greaterEqual, false)
 
 				console.log('')
 			}
