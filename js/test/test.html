@@ -26,13 +26,13 @@
 			{
 			    console.log('Bool')
 
-			    var not = new Not(true)
+			    var not = Not(true)
 				check(not, false)
 
-				var and = new And(true, false)
+				var and = And(true, false)
 				check(and, false)
 
-				var or = new Or(true, false)
+				var or = Or(true, false)
 				check(or, true)
 
 				console.log('')
@@ -42,22 +42,22 @@
 			{
 			    console.log('Comp')
 
-			    var equal = new Equal(3, 4)
+			    var equal = Equal(3, 4)
 				check(equal, false)
 
-				var notEqual = new NotEqual(3, 4)
+				var notEqual = NotEqual(3, 4)
 				check(notEqual, true)
 
-				var lessThan = new LessThan(3, 4)
+				var lessThan = LessThan(3, 4)
 				check(lessThan, true)
 
-				var lessEqual = new LessEqual(3, 4)
+				var lessEqual = LessEqual(3, 4)
 				check(lessEqual, true)
 
-				var greaterThan = new GreaterThan(3, 4)
+				var greaterThan = GreaterThan(3, 4)
 				check(greaterThan, false)
 
-				var greaterEqual = new GreaterEqual(3, 4)
+				var greaterEqual = GreaterEqual(3, 4)
 				check(greaterEqual, false)
 
 				console.log('')
@@ -67,7 +67,7 @@
 			{
 			    console.log('Cond')
 
-			    var ifThenElse = new If(false, 3, 4)
+			    var ifThenElse = If(false, 3, 4)
 				check(ifThenElse, 4)
 
 				console.log('')
@@ -77,7 +77,7 @@
 			{
 			    console.log('Func')
 
-			    var map = new Map([1, 2, 3], Inc)
+			    var map = Map([1, 2, 3], Inc)
 				check(map, [2, 3, 4])
 
 				console.log('')
@@ -87,15 +87,15 @@
 			{
 			    console.log('List')
 
-                var length = new Length([1, 2, 3])
+                var length = Length([1, 2, 3])
 				check(length, 3)
 
-			    var head = new Head([1, 2, 3])
+			    var head = Head([1, 2, 3])
 				check(head, 1)
 
 				try
 				{
-					var headError = new Head([])
+					var headError = Head([])
 					check(headError, null)
 				}
 				catch (e)
@@ -103,12 +103,12 @@
 					check(true, true)
 				}
 
-				var tail = new Tail([1, 2, 3])
+				var tail = Tail([1, 2, 3])
 				check(tail, [2, 3])
 
 				try
 				{
-					var tailError = new Tail([])
+					var tailError = Tail([])
 					check(tailError, null)
 				}
 				catch (e)
@@ -116,10 +116,10 @@
 					check(true, true)
 				}
 
-				var appendFirst = new AppendFirst(1, [2, 3])
+				var appendFirst = AppendFirst(1, [2, 3])
 				check(appendFirst, [1, 2, 3])
 
-				var appendLast = new AppendLast(3, [1, 2])
+				var appendLast = AppendLast(3, [1, 2])
 				check(appendLast, [1, 2, 3])
 
                 console.log('')
@@ -129,28 +129,28 @@
 			{
 			    console.log('Math')
 
-                var add = new Add(4, 8)
+                var add = Add(4, 8)
 				check(add, 12)
 
-				var sub = new Sub(4, 8)
+				var sub = Sub(4, 8)
 				check(sub, -4)
 
-			    var mul = new Mul(4, 8)
+			    var mul = Mul(4, 8)
 				check(mul, 32)
 
-                var div = new Div(4, 8)
+                var div = Div(4, 8)
 				check(div, 0.5)
 
-				var inc = new Inc(4)
+				var inc = Inc(4)
 				check(inc, 5)
 
-				var dec = new Dec(4)
+				var dec = Dec(4)
 				check(dec, 3)
 
-                var pow = new Pow(4, 8)
+                var pow = Pow(4, 8)
 				check(pow, 65536)
 
-                var mod = new Mod(4, 8)
+                var mod = Mod(4, 8)
 				check(mod, 4)
 
 				console.log('')
@@ -162,101 +162,113 @@
 			{
 			    console.log('Custom')
 
-                var factorial = new Factorial(5)
+                var factorial = Factorial(5)
 				check(factorial, 120)
 
-				var fibonacci = new Fibonacci(10)
+				var fibonacci = Fibonacci(10)
 				check(fibonacci, [1, 1, 2, 3, 5, 8, 13, 21, 34, 55])
 
 				console.log('')
 			}
 
+			// Number Factorial(Number n) = If(Equal(n 0) 1 Mul(n Factorial(Sub(n 1))))
+
             function Factorial(n)
 			{
-				this.eval = function()
-				{
-					return new If(new Equal(n,
-											0),
+				return {
+					eval: function()
+					{
+						return If(Equal(n, 0),
 								  1,
-		                    	  new Mul(n,
-										  new Factorial(new Sub(n,
-										  						1)
-										  )
+		                    	  Mul(n,
+									  Factorial(Sub(n, 1))
 								  )
-					).eval()
+						).eval()
+					}
 				}
 			}
 
 			function Fibonacci(limit)
 			{
-				this.eval = function()
-				{
-					return new Fibo(0,
-                                    limit,
-                                    []
-                    ).eval()
+				return {
+					eval: function()
+					{
+						return Fibo(0, limit, []).eval()
+					}
 				}
 			}
 
 			function Fibo(index, limit, list)
 			{
-				this.eval = function()
-				{
-					return new If(new GreaterEqual(index, limit),
+				return {
+					eval: function()
+					{
+						return If(GreaterEqual(index, limit),
 					              list,
-					              new FiboCase0(index, limit, list)
-					).eval()
+					              FiboCase0(index, limit, list)
+						).eval()
+					}
 				}
 			}
 
 			function FiboCase0(index, limit, list)
 			{
-				this.eval = function()
-				{
-					return new If(new Equal(index, 0),
-			                      new Fibo(1, limit, [1]),
-			                      new FiboCase1(index, limit, list)
-					).eval()
+				return {
+					eval: function()
+					{
+						return If(Equal(index, 0),
+			                      Fibo(1, limit, [1]),
+			                      FiboCase1(index, limit, list)
+						).eval()
+					}
 				}
 			}
 
 			function FiboCase1(index, limit, list)
 			{
-				this.eval = function()
-				{
-					return new If(new Equal(index, 1),
-	                              new Fibo(2, limit, [1, 1]),
-	                      		  new FiboCaseRest(index, limit, list)
-					).eval()
+				return {
+					eval: function()
+					{
+						return If(Equal(index, 1),
+	                              Fibo(2, limit, [1, 1]),
+	                      		  FiboCaseRest(index, limit, list)
+						).eval()
+					}
 				}
 			}
 
 			function FiboCaseRest(index, limit, list)
 			{
-				this.eval = function()
-				{
-					return new Fibo(new Inc(index),
+				return {
+					eval: function()
+					{
+						return Fibo(Inc(index),
                   			 	    limit,
-                  				    new AppendLast(new Add(new FiboLast1(index, list),
-                  				    					   new FiboLast2(index, list)),
-                  				    			   list)
-					).eval()
+                  				    AppendLast(Add(FiboLast1(index, list),
+          				    					   FiboLast2(index, list)),
+          				    			   	   list)
+						).eval()
+					}
 				}
 			}
 
 			function FiboLast1(index, list)
 			{
-				this.eval = function()
-				{
-					return new ElementAt(new Sub(index, 1), list).eval()
+				return {
+					eval: function()
+					{
+						return ElementAt(Sub(index, 1), list).eval()
+					}
 				}
 			}
 
 			function FiboLast2(index, list)
 			{
-				this.eval = function()
-				{
-					return new ElementAt(new Sub(index, 2), list).eval()
+				return {
+					eval: function()
+					{
+						return ElementAt(Sub(index, 2), list).eval()
+					}	
 				}
 			}
 
