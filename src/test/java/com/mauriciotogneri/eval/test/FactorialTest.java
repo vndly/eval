@@ -1,7 +1,7 @@
 package com.mauriciotogneri.eval.test;
 
-import com.mauriciotogneri.eval.types.Num;
 import com.mauriciotogneri.eval.test.expressions.Factorial;
+import com.mauriciotogneri.eval.types.Num;
 
 import org.junit.Test;
 
@@ -13,8 +13,7 @@ public class FactorialTest
     public void factorial()
     {
         Factorial factorial = new Factorial(new Num(5));
-        Number result = factorial.eval();
 
-        assertEquals(120.0, result);
+        assertEquals(120d, factorial.eval());
     }
 }
