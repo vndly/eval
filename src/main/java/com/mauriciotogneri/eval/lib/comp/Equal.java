@@ -1,4 +1,4 @@
-package com.mauriciotogneri.eval.lib.bool;
+package com.mauriciotogneri.eval.lib.comp;
 
 import com.mauriciotogneri.eval.lib.Expression;
 

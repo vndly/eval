@@ -2,7 +2,7 @@ package com.mauriciotogneri.eval.test.custom;
 
 import com.mauriciotogneri.eval.lib.Expression;
 import com.mauriciotogneri.eval.lib.If;
-import com.mauriciotogneri.eval.lib.bool.Equal;
+import com.mauriciotogneri.eval.lib.comp.Equal;
 import com.mauriciotogneri.eval.lib.math.Mul;
 import com.mauriciotogneri.eval.lib.math.Sub;
 import com.mauriciotogneri.eval.types.Num;
