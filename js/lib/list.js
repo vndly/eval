@@ -21,3 +21,19 @@ function Tail(l)
 		return l.slice(1).value()
 	}
 }
+
+function Append(e, l)
+{
+	this.value = function()
+	{
+		var result = []
+		result.push(e.value())
+
+		for (var i = 0; i < l.length; i++)
+        {
+            result.push(l[i].value())
+        }
+
+		return result
+	}
+}

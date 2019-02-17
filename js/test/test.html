@@ -43,16 +43,8 @@
 				var tail = new Tail([1, 2, 3])
 				check(tail, [2, 3])
 
-                /*
-
-                @Test
-                public void append()
-                {
-                    Append append = new Append<>(new Num(1), new Seq<>(new Num(2), new Num(3)));
-
-                    //assertArrayEquals(new Number[] {1d, 2d, 3d}, append.eval());
-                }
-                */
+				var append = new Append(1, [2, 3])
+				check(append, [1, 2, 3])
 
                 console.log('')
 			}

@@ -44,7 +44,7 @@ if (!Array.prototype.equals)
 	        return false
 	    }
 
-	    for (var i = 0, l=this.length; i < l; i++)
+	    for (var i = 0, l = this.length; i < l; i++)
 	    {
 	        if (this[i] instanceof Array && array[i] instanceof Array)
 	        {
@@ -62,5 +62,5 @@ if (!Array.prototype.equals)
 	    return true
 	}
 }
-// Hide method from for-in loops
-Object.defineProperty(Array.prototype, "equals", {enumerable: false});
+
+Object.defineProperty(Array.prototype, 'equals', {enumerable: false})
