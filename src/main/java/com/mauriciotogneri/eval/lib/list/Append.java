@@ -18,11 +18,6 @@ public class Append<R, T extends Expression<R>> implements Expression<R[]>
     @SuppressWarnings("unchecked")
     public R[] eval()
     {
-        if (s.empty())
-        {
-            throw new RuntimeException("Cannot get head of empty list");
-        }
-
         Object[] result = new Object[s.size() + 1];
         result[0] = e.eval();
 

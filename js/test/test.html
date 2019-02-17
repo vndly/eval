@@ -93,8 +93,28 @@
 			    var head = new Head([1, 2, 3])
 				check(head, 1)
 
+				try
+				{
+					var headError = new Head([])
+					check(headError, null)
+				}
+				catch (e)
+				{
+					check(true, true)
+				}
+
 				var tail = new Tail([1, 2, 3])
 				check(tail, [2, 3])
+
+				try
+				{
+					var tailError = new Tail([])
+					check(tailError, null)
+				}
+				catch (e)
+				{
+					check(true, true)
+				}
 
 				var appendFirst = new AppendFirst(1, [2, 3])
 				check(appendFirst, [1, 2, 3])

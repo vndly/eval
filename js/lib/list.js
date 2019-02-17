@@ -10,7 +10,14 @@ function Head(l)
 {
 	this.eval = function()
 	{
-		return l.eval()[0].eval()
+		var list = l.eval()
+
+        if (list.length == 0)
+        {
+            throw new Error('Cannot get head of empty list')
+        }
+
+		return list[0].eval()
 	}
 }
 
@@ -18,7 +25,14 @@ function Tail(l)
 {
 	this.eval = function()
 	{
-		return l.eval().slice(1).eval()
+		var list = l.eval()
+
+		if (list.length == 0)
+		{
+			throw new Error('Cannot get tail of empty list')
+		}
+
+		return list.slice(1).eval()
 	}
 }
 
