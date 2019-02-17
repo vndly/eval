@@ -4,6 +4,7 @@ import com.mauriciotogneri.eval.test.custom.FactorialTest;
 import com.mauriciotogneri.eval.test.lib.BoolTest;
 import com.mauriciotogneri.eval.test.lib.CompTest;
 import com.mauriciotogneri.eval.test.lib.CondTest;
+import com.mauriciotogneri.eval.test.lib.FuncTest;
 import com.mauriciotogneri.eval.test.lib.ListTest;
 import com.mauriciotogneri.eval.test.lib.MathTest;
 
@@ -15,6 +16,7 @@ import org.junit.runners.Suite;
         BoolTest.class,
         CompTest.class,
         CondTest.class,
+        FuncTest.class,
         ListTest.class,
         MathTest.class,
 

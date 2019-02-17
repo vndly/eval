@@ -1,8 +1,8 @@
 package com.mauriciotogneri.eval.test.custom;
 
 import com.mauriciotogneri.eval.lib.Expression;
-import com.mauriciotogneri.eval.lib.cond.If;
 import com.mauriciotogneri.eval.lib.comp.Equal;
+import com.mauriciotogneri.eval.lib.cond.If;
 import com.mauriciotogneri.eval.lib.math.Mul;
 import com.mauriciotogneri.eval.lib.math.Sub;
 import com.mauriciotogneri.eval.types.Num;
@@ -33,8 +33,6 @@ public class FactorialTest
         @Override
         public Number eval()
         {
-            //FactorialExpression factorial = Factorial::new;
-
             return new If<>(new Equal(n,
                                       new Num(0)),
                             new Num(1),
@@ -44,11 +42,6 @@ public class FactorialTest
                                     )
                             )
             ).eval();
-        }
-
-        public interface FactorialExpression
-        {
-            Factorial create(Expression<Number> n);
         }
     }
 }
