@@ -1,4 +1,4 @@
-package com.mauriciotogneri.eval.expressions.lib;
+package com.mauriciotogneri.eval.lib;
 
 public class If<T> implements Expression<T>
 {

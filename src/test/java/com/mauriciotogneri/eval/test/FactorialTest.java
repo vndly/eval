@@ -1,6 +1,6 @@
 package com.mauriciotogneri.eval.test;
 
-import com.mauriciotogneri.eval.expressions.types.Num;
+import com.mauriciotogneri.eval.types.Num;
 import com.mauriciotogneri.eval.test.expressions.Factorial;
 
 import org.junit.Test;

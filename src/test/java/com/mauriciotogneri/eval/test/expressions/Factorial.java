@@ -1,11 +1,11 @@
 package com.mauriciotogneri.eval.test.expressions;
 
-import com.mauriciotogneri.eval.expressions.lib.Equal;
-import com.mauriciotogneri.eval.expressions.lib.Expression;
-import com.mauriciotogneri.eval.expressions.lib.If;
-import com.mauriciotogneri.eval.expressions.lib.math.Mul;
-import com.mauriciotogneri.eval.expressions.lib.math.Sub;
-import com.mauriciotogneri.eval.expressions.types.Num;
+import com.mauriciotogneri.eval.lib.Equal;
+import com.mauriciotogneri.eval.lib.Expression;
+import com.mauriciotogneri.eval.lib.If;
+import com.mauriciotogneri.eval.lib.math.Mul;
+import com.mauriciotogneri.eval.lib.math.Sub;
+import com.mauriciotogneri.eval.types.Num;
 
 public class Factorial implements Expression<Number>
 {

@@ -1,6 +1,6 @@
-package com.mauriciotogneri.eval.expressions.types;
+package com.mauriciotogneri.eval.types;
 
-import com.mauriciotogneri.eval.expressions.lib.Expression;
+import com.mauriciotogneri.eval.lib.Expression;
 
 public class Num implements Expression<Number>
 {
