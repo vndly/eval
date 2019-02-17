@@ -19,22 +19,6 @@
 				-------------------------------------
 
 				Number Factorial(Number n) = If(Equal(n 0) 1 Mul(n Factorial(Subtract(n 1))))
-
-				Number Factorial(Number n) =
-					If(
-						Equal(
-							n 0
-						)
-						1
-						Mul(
-							n
-							Factorial(
-								Subtract(
-									n 1
-								)
-							)
-						)
-					)
 			*/
  
 			/*
@@ -51,27 +35,28 @@
 		        }
 			*/
 
+			if (!Number.prototype.value) 
+			{
+				Number.prototype.value = function()
+				{
+					return this.valueOf()
+				}
+			}
+
+			if (!Boolean.prototype.value) 
+			{
+				Boolean.prototype.value = function()
+				{
+					return this.valueOf()
+				}
+			}
+
 			function run()
 			{
-				var result = new Factorial(new Num(5))
-				document.write(result.value())
-				console.log(result.value())
-			}
-
-			function Num(n)
-			{
-				this.value = function()
-				{
-					return n
-				}
-			}
-
-			function Bool(b)
-			{
-				this.value = function()
-				{
-					return b
-				}
+				var result = new Factorial(5)
+				var value = result.value()
+				document.write(value)
+				console.log(value)
 			}
 
 			function Mul(a, b)
@@ -110,16 +95,15 @@
 			{
 				this.value = function()
 				{
-					return new If(
-		                    new Equal(n, new Num(0)),
-		                    new Num(1),
-		                    new Mul(
-		                            n,
-		                            new Factorial(
-		                                    new Sub(n, new Num(1))
-		                            )
-		                    )
-		            ).value()
+					return new If(new Equal(n,
+											0),
+								  1,
+		                    	  new Mul(n,
+										  new Factorial(new Sub(n,
+										  						1)
+										  )
+								  )
+					).value()
 				}
 			}
 
