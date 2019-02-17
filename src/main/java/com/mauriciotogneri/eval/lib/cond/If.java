@@ -1,4 +1,6 @@
-package com.mauriciotogneri.eval.lib;
+package com.mauriciotogneri.eval.lib.cond;
+
+import com.mauriciotogneri.eval.lib.Expression;
 
 public class If<T> implements Expression<T>
 {
