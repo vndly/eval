@@ -1,19 +1,19 @@
 package com.mauriciotogneri.eval.expressions;
 
-public class Mul implements Expression<Num>
+public class Mul implements Expression<Number>
 {
-    private final Expression<Num> a;
-    private final Expression<Num> b;
+    private final Expression<Number> a;
+    private final Expression<Number> b;
 
-    public Mul(Expression<Num> a, Expression<Num> b)
+    public Mul(Expression<Number> a, Expression<Number> b)
     {
         this.a = a;
         this.b = b;
     }
 
     @Override
-    public Num eval()
+    public Number eval()
     {
-        return new Num(a.eval().value() * b.eval().value());
+        return a.eval().doubleValue() * b.eval().doubleValue();
     }
 }

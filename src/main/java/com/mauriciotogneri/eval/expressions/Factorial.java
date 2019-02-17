@@ -1,16 +1,16 @@
 package com.mauriciotogneri.eval.expressions;
 
-public class Factorial implements Expression<Num>
+public class Factorial implements Expression<Number>
 {
-    private final Expression<Num> n;
+    private final Expression<Number> n;
 
-    public Factorial(Expression<Num> n)
+    public Factorial(Expression<Number> n)
     {
         this.n = n;
     }
 
     @Override
-    public Num eval()
+    public Number eval()
     {
         return new If<>(
                 new Equal(n, new Num(0)),
