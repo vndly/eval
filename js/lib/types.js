@@ -26,7 +26,16 @@ if (!Array.prototype.eval)
 {
 	Array.prototype.eval = function()
 	{
-		return this.valueOf()
+		var result = []
+
+        var list = this.valueOf()
+
+        for (var i = 0; i < list.length; i++)
+        {
+            result.push(list[i].eval())
+        }
+
+        return result
 	}
 }
 
