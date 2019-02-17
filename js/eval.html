@@ -2,6 +2,10 @@
 <html>
 	<head>
 		<title>Types</title>
+        <script type="text/javascript" charset="UTF-8" src="lib/comp.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="lib/cond.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="lib/math.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="lib/types.js"></script>
 		<script type="text/javascript">
 			
 			/*
@@ -35,60 +39,12 @@
 		        }
 			*/
 
-			if (!Number.prototype.value) 
-			{
-				Number.prototype.value = function()
-				{
-					return this.valueOf()
-				}
-			}
-
-			if (!Boolean.prototype.value) 
-			{
-				Boolean.prototype.value = function()
-				{
-					return this.valueOf()
-				}
-			}
-
 			function run()
 			{
 				var result = new Factorial(5)
 				var value = result.value()
 				document.write(value)
 				console.log(value)
-			}
-
-			function Mul(a, b)
-			{
-				this.value = function()
-				{
-					return a.value() * b.value()
-				}
-			}
-
-			function Sub(a, b)
-			{
-				this.value = function()
-				{
-					return a.value() - b.value()
-				}
-			}
-
-			function Equal(a, b)
-			{
-				this.value = function()
-				{
-					return a.value() === b.value()
-				}
-			}
-
-			function If(a, b, c)
-			{
-				this.value = function()
-				{
-					return a.value() ? b.value() : c.value()
-				}
 			}
 
 			function Factorial(n)
