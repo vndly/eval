@@ -175,100 +175,79 @@
 
             function Factorial(n)
 			{
-				return {
-					eval: function()
-					{
-						return If(Equal(n, 0),
-								  1,
-		                    	  Mul(n,
-									  Factorial(Sub(n, 1))
-								  )
-						).eval()
-					}
+				return function()
+				{
+					return $(If(Equal(n, 0),
+							  	1,
+	                    	  	Mul(n,
+								  	Factorial(Sub(n, 1))
+							  	)))
 				}
 			}
 
 			function Fibonacci(limit)
 			{
-				return {
-					eval: function()
-					{
-						return Fibo(0, limit, []).eval()
-					}
+				return function()
+				{
+					return $(Fibo(0, limit, []))
 				}
 			}
 
 			function Fibo(index, limit, list)
 			{
-				return {
-					eval: function()
-					{
-						return If(GreaterEqual(index, limit),
-					              list,
-					              FiboCase0(index, limit, list)
-						).eval()
-					}
+				return function()
+				{
+					return $(If(GreaterEqual(index, limit),
+				              	list,
+				              	FiboCase0(index, limit, list)))
 				}
 			}
 
 			function FiboCase0(index, limit, list)
 			{
-				return {
-					eval: function()
-					{
-						return If(Equal(index, 0),
-			                      Fibo(1, limit, [1]),
-			                      FiboCase1(index, limit, list)
-						).eval()
-					}
+				return function()
+				{
+					return $(If(Equal(index, 0),
+		                      	Fibo(1, limit, [1]),
+		                      	FiboCase1(index, limit, list)))
 				}
 			}
 
 			function FiboCase1(index, limit, list)
 			{
-				return {
-					eval: function()
-					{
-						return If(Equal(index, 1),
-	                              Fibo(2, limit, [1, 1]),
-	                      		  FiboCaseRest(index, limit, list)
-						).eval()
-					}
+				return function()
+				{
+					return $(If(Equal(index, 1),
+                              	Fibo(2, limit, [1, 1]),
+                      		  	FiboCaseRest(index, limit, list)))
 				}
 			}
 
 			function FiboCaseRest(index, limit, list)
 			{
-				return {
-					eval: function()
-					{
-						return Fibo(Inc(index),
-                  			 	    limit,
-                  				    AppendLast(Add(FiboLast1(index, list),
-          				    					   FiboLast2(index, list)),
-          				    			   	   list)
-						).eval()
-					}
+				return function()
+				{
+					return $(Fibo(Inc(index),
+              			 	      limit,
+              				      AppendLast(Add(FiboLast1(index, list),
+      				    						 FiboLast2(index, list)),
+      				    			   		 list)))
 				}
 			}
 
 			function FiboLast1(index, list)
 			{
-				return {
-					eval: function()
-					{
-						return ElementAt(Sub(index, 1), list).eval()
-					}
+				return function()
+				{
+					return $(ElementAt(Sub(index, 1), list))
 				}
 			}
 
 			function FiboLast2(index, list)
 			{
-				return {
-					eval: function()
-					{
-						return ElementAt(Sub(index, 2), list).eval()
-					}	
+				return function()
+				{
+					return $(ElementAt(Sub(index, 2), list))
 				}
 			}
 
@@ -276,7 +255,7 @@
 
 			function check(expression, expected)
 			{
-			    var actual = expression.eval()
+			    var actual = $(expression)
 
 			    if (equal(actual, expected))
 			    {

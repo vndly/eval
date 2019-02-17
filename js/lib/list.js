@@ -1,93 +1,81 @@
 function Length(l)
 {
-	return {
-		eval: function()
-    	{
-    		return l.eval().length
-    	}
-	}
+	return function()
+    {
+        return $(l).length
+    }
 }
 
 function Head(l)
 {
-	return {
-		eval: function()
+	return function()
+    {
+        var list = $(l)
+
+        if (list.length == 0)
         {
-            var list = l.eval()
-
-            if (list.length == 0)
-            {
-                throw new Error('Cannot get head of empty list')
-            }
-
-            return list[0].eval()
+            throw new Error('Cannot get head of empty list')
         }
-	}
+
+        return list[0]
+    }
 }
 
 function Tail(l)
 {
-	return {
-		eval: function()
+	return function()
+    {
+        var list = $(l)
+
+        if (list.length == 0)
         {
-            var list = l.eval()
-
-            if (list.length == 0)
-            {
-                throw new Error('Cannot get tail of empty list')
-            }
-
-            return list.slice(1).eval()
+            throw new Error('Cannot get tail of empty list')
         }
-	}
+
+        return list.slice(1)
+    }
 }
 
 function AppendFirst(e, l)
 {
-	return {
-		eval: function()
+	return function()
+    {
+        var result = []
+        result.push($(e))
+
+        var list = $(l)
+
+        for (var i = 0; i < list.length; i++)
         {
-            var result = []
-            result.push(e.eval())
-
-            var list = l.eval()
-
-            for (var i = 0; i < list.length; i++)
-            {
-                result.push(list[i].eval())
-            }
-
-            return result
+            result.push(list[i])
         }
-	}
+
+        return result
+    }
 }
 
 function AppendLast(e, l)
 {
-	return {
-		eval: function()
+	return function()
+    {
+        var result = []
+        var list = $(l)
+
+        for (var i = 0; i < list.length; i++)
         {
-            var result = []
-            var list = l.eval()
-
-            for (var i = 0; i < list.length; i++)
-            {
-                result.push(list[i].eval())
-            }
-
-            result.push(e.eval())
-
-            return result
+            result.push(list[i])
         }
-	}
+
+        result.push($(e))
+
+        return result
+    }
 }
 
 function ElementAt(e, l)
 {
-	return {
-		eval: function()
-        {
-            return l.eval()[e.eval()].eval()
-        }
-	}
+	return function()
+    {
+        return $(l)[$(e)]
+    }
 }

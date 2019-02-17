@@ -1,79 +1,63 @@
 function Add(a, b)
 {
-	return {
-		eval: function()
-        {
-            return a.eval() + b.eval()
-        }
-	}
+	return function()
+    {
+        return $(a) + $(b)
+    }
 }
 
 function Sub(a, b)
 {
-	return {
-        eval: function()
-        {
-            return a.eval() - b.eval()
-        }
+	return function()
+    {
+        return $(a) - $(b)
     }
 }
 
 function Mul(a, b)
 {
-	return {
-		eval: function()
-        {
-            return a.eval() * b.eval()
-        }
-	}
+	return function()
+    {
+        return $(a) * $(b)
+    }
 }
 
 function Div(a, b)
 {
-	return {
-        eval: function()
-        {
-            return a.eval() / b.eval()
-        }
+	return function()
+    {
+        return $(a) / $(b)
     }
 }
 
 function Inc(a)
 {
-	return {
-		eval: function()
-        {
-            return a.eval() + 1
-        }
-	}
+	return function()
+    {
+        return $(a) + 1
+    }
 }
 
 function Dec(a)
 {
-	return {
-		eval: function()
-        {
-            return a.eval() - 1
-        }
-	}
+	return function()
+    {
+        return $(a) - 1
+    }
 }
 
 function Pow(a, b)
 {
-	return {
-		eval: function()
-        {
-            return Math.pow(a.eval(), b.eval())
-        }
-	}
+	return function()
+    {
+        return Math.pow($(a), $(b))
+    }
 }
 
 function Mod(a, b)
 {
-	return {
-		eval: function()
-        {
-            return a.eval() % b.eval()
-        }
-	}
+	return function()
+    {
+        return $(a) % $(b)
+    }
 }

@@ -1,3 +1,8 @@
+function $(e)
+{
+	return (e instanceof Function) ? e() : e.eval()
+}
+
 if (!Number.prototype.eval)
 {
 	Number.prototype.eval = function()

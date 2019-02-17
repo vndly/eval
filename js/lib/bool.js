@@ -1,29 +1,23 @@
 function Not(b)
 {
-	return {
-		eval: function()
-        {
-            return !b.eval()
-        }
-	}
+	return function()
+    {
+        return !$(b)
+    }
 }
 
 function And(a, b)
 {
-	return {
-		eval: function()
-        {
-            return a.eval() && b.eval()
-        }
-	}
+	return function()
+    {
+        return $(a) && $(b)
+    }
 }
 
 function Or(a, b)
 {
-	return {
-		eval: function()
-        {
-            return a.eval() || b.eval()
-        }
-	}
+	return function()
+    {
+        return $(a) || $(b)
+    }
 }
