@@ -16,6 +16,7 @@
 			    bool()
 				comp()
 				cond()
+				func()
 				list()
 				math()
 			}
@@ -67,6 +68,16 @@
 
 			    var ifThenElse = new If(false, 3, 4)
 				check(ifThenElse, 4)
+
+				console.log('')
+			}
+
+			function func()
+			{
+			    console.log('Func')
+
+			    var map = new Map([1, 2, 3], Inc)
+				check(map, [2, 3, 4])
 
 				console.log('')
 			}
