@@ -16,6 +16,7 @@ public class Map<A, B> implements Expression<B[]>
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public B[] eval()
     {
         Object[] result = new Object[a.length];

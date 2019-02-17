@@ -12,6 +12,7 @@ public class Tail<T> implements Expression<T[]>
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T[] eval()
     {
         if (l.length == 0)
