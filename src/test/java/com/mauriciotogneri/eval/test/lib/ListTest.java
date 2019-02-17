@@ -1,5 +1,6 @@
 package com.mauriciotogneri.eval.test.lib;
 
+import com.mauriciotogneri.eval.lib.list.Append;
 import com.mauriciotogneri.eval.lib.list.Head;
 import com.mauriciotogneri.eval.lib.list.Length;
 import com.mauriciotogneri.eval.lib.list.Tail;
@@ -34,5 +35,13 @@ public class ListTest
         Length length = new Length<>(new Num[] {new Num(1), new Num(2), new Num(3)});
 
         assertEquals(3, length.eval());
+    }
+
+    @Test
+    public void append()
+    {
+        Append append = new Append<>(new Num(1), new Num[] {new Num(2), new Num(3)});
+
+        assertArrayEquals(new Number[] {1d, 2d, 3d}, append.eval());
     }
 }
