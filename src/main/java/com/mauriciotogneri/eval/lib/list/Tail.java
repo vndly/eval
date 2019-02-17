@@ -20,7 +20,6 @@ public class Tail<T> implements Expression<T[]>
         }
 
         Object[] result = new Object[l.length - 1];
-        //System.arraycopy(l, 1, result, 0, l.length - 1);
 
         for (int i = 1; i < l.length; i++)
         {

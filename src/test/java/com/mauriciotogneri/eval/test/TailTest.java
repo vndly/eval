@@ -10,7 +10,7 @@ import static org.junit.Assert.assertArrayEquals;
 public class TailTest
 {
     @Test
-    public void factorial()
+    public void tail()
     {
         Tail tail = new Tail<>(new Num[] {new Num(1), new Num(2), new Num(3)});
 
