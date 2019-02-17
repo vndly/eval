@@ -9,11 +9,6 @@ public class Num implements Expression<Number>
         this.n = n;
     }
 
-    public double value()
-    {
-        return n;
-    }
-
     @Override
     public Number eval()
     {

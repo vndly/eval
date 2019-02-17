@@ -1,6 +1,6 @@
 package com.mauriciotogneri.eval.expressions;
 
-public class Equal implements Expression<Bool>
+public class Equal implements Expression<Boolean>
 {
     private final Expression a;
     private final Expression b;
@@ -12,8 +12,8 @@ public class Equal implements Expression<Bool>
     }
 
     @Override
-    public Bool eval()
+    public Boolean eval()
     {
-        return new Bool(a.eval().equals(b.eval()));
+        return a.eval().equals(b.eval());
     }
 }

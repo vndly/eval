@@ -1,6 +1,6 @@
 package com.mauriciotogneri.eval.expressions;
 
-public class Bool implements Expression<Bool>
+public class Bool implements Expression<Boolean>
 {
     private final boolean b;
 
@@ -9,14 +9,9 @@ public class Bool implements Expression<Bool>
         this.b = b;
     }
 
-    public boolean value()
+    @Override
+    public Boolean eval()
     {
         return b;
-    }
-
-    @Override
-    public Bool eval()
-    {
-        return new Bool(b);
     }
 }

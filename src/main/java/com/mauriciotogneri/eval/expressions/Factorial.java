@@ -12,15 +12,21 @@ public class Factorial implements Expression<Number>
     @Override
     public Number eval()
     {
-        return new If<>(
-                new Equal(n, new Num(0)),
-                new Num(1),
-                new Mul(
-                        n,
-                        new Factorial(
-                                new Sub(n, new Num(1))
+        //FactorialExpression factorial = Factorial::new;
+
+        return new If<>(new Equal(n,
+                                  new Num(0)),
+                        new Num(1),
+                        new Mul(n,
+                                new Factorial(new Sub(n,
+                                                      new Num(1))
+                                )
                         )
-                )
         ).eval();
+    }
+
+    public interface FactorialExpression
+    {
+        Factorial create(Expression<Number> n);
     }
 }
