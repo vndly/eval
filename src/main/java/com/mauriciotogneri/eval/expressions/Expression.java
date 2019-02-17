@@ -1,6 +1,6 @@
 package com.mauriciotogneri.eval.expressions;
 
-public interface Expression
+public interface Expression<T>
 {
-    Object eval();
+    T eval();
 }

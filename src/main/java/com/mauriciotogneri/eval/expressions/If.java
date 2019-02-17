@@ -1,12 +1,12 @@
 package com.mauriciotogneri.eval.expressions;
 
-public class If implements Expression
+public class If<T> implements Expression<T>
 {
-    private final Bool a;
-    private final Expression b;
-    private final Expression c;
+    private final Expression<Bool> a;
+    private final Expression<T> b;
+    private final Expression<T> c;
 
-    public If(Bool a, Expression b, Expression c)
+    public If(Expression<Bool> a, Expression<T> b, Expression<T> c)
     {
         this.a = a;
         this.b = b;
@@ -14,8 +14,8 @@ public class If implements Expression
     }
 
     @Override
-    public Object eval()
+    public T eval()
     {
-        return a.eval() ? b.eval() : c.eval();
+        return a.eval().value() ? b.eval() : c.eval();
     }
 }

@@ -1,11 +1,11 @@
 package com.mauriciotogneri.eval.expressions;
 
-public class Sub implements Expression
+public class Sub implements Expression<Num>
 {
-    private final Num a;
-    private final Num b;
+    private final Expression<Num> a;
+    private final Expression<Num> b;
 
-    public Sub(Num a, Num b)
+    public Sub(Expression<Num> a, Expression<Num> b)
     {
         this.a = a;
         this.b = b;
@@ -14,6 +14,6 @@ public class Sub implements Expression
     @Override
     public Num eval()
     {
-        return new Num(a.eval() - b.eval());
+        return new Num(a.eval().value() - b.eval().value());
     }
 }

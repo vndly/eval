@@ -1,6 +1,6 @@
 package com.mauriciotogneri.eval.expressions;
 
-public class Num implements Expression
+public class Num implements Expression<Num>
 {
     private final double n;
 
@@ -9,9 +9,14 @@ public class Num implements Expression
         this.n = n;
     }
 
-    @Override
-    public Double eval()
+    public double value()
     {
         return n;
+    }
+
+    @Override
+    public Num eval()
+    {
+        return new Num(n);
     }
 }
