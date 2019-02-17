@@ -14,6 +14,7 @@
 			function run()
 			{
 				math()
+				bool()
 				list()
 			}
 
@@ -26,6 +27,22 @@
 
 				var sub = new Sub(4, 8)
 				check(sub, -4)
+
+				console.log('')
+			}
+
+			function bool()
+			{
+			    console.log('Bool')
+
+			    var not = new Not(true)
+				check(not, false)
+
+				var and = new And(true, false)
+				check(and, false)
+
+				var or = new Or(true, false)
+				check(or, true)
 
 				console.log('')
 			}
