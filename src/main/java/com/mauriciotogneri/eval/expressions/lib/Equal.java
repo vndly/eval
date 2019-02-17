@@ -1,4 +1,4 @@
-package com.mauriciotogneri.eval.expressions;
+package com.mauriciotogneri.eval.expressions.lib;
 
 public class Equal implements Expression<Boolean>
 {

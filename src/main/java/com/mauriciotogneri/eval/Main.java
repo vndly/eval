@@ -1,7 +1,7 @@
 package com.mauriciotogneri.eval;
 
-import com.mauriciotogneri.eval.expressions.Factorial;
-import com.mauriciotogneri.eval.expressions.Num;
+import com.mauriciotogneri.eval.expressions.lib.Factorial;
+import com.mauriciotogneri.eval.expressions.types.Num;
 
 public class Main
 {

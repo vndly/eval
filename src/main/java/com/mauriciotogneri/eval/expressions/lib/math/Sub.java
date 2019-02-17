@@ -1,4 +1,6 @@
-package com.mauriciotogneri.eval.expressions;
+package com.mauriciotogneri.eval.expressions.lib.math;
+
+import com.mauriciotogneri.eval.expressions.lib.Expression;
 
 public class Sub implements Expression<Number>
 {

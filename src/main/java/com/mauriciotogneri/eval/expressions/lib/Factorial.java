@@ -1,4 +1,8 @@
-package com.mauriciotogneri.eval.expressions;
+package com.mauriciotogneri.eval.expressions.lib;
+
+import com.mauriciotogneri.eval.expressions.lib.math.Mul;
+import com.mauriciotogneri.eval.expressions.lib.math.Sub;
+import com.mauriciotogneri.eval.expressions.types.Num;
 
 public class Factorial implements Expression<Number>
 {
