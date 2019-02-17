@@ -1,6 +1,6 @@
 function Length(l)
 {
-	this.value = function()
+	this.eval = function()
 	{
 		return l.length
 	}
@@ -8,30 +8,30 @@ function Length(l)
 
 function Head(l)
 {
-	this.value = function()
+	this.eval = function()
 	{
-		return l[0].value()
+		return l[0].eval()
 	}
 }
 
 function Tail(l)
 {
-	this.value = function()
+	this.eval = function()
 	{
-		return l.slice(1).value()
+		return l.slice(1).eval()
 	}
 }
 
 function Append(e, l)
 {
-	this.value = function()
+	this.eval = function()
 	{
 		var result = []
-		result.push(e.value())
+		result.push(e.eval())
 
 		for (var i = 0; i < l.length; i++)
         {
-            result.push(l[i].value())
+            result.push(l[i].eval())
         }
 
 		return result

@@ -51,15 +51,15 @@
 
 			function check(expression, expected)
 			{
-			    var value  = expression.value()
+			    var actual = expression.eval()
 
-			    if (equal(value, expected))
+			    if (equal(actual, expected))
 			    {
 			        console.log(true)
                 }
                 else
                 {
-                    console.error(value, expected)
+                    console.error(actual, expected)
                 }
 			}
 

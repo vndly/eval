@@ -1,15 +1,15 @@
 function Mul(a, b)
 {
-	this.value = function()
+	this.eval = function()
 	{
-		return a.value() * b.value()
+		return a.eval() * b.eval()
 	}
 }
 
 function Sub(a, b)
 {
-	this.value = function()
+	this.eval = function()
 	{
-		return a.value() - b.value()
+		return a.eval() - b.eval()
 	}
 }

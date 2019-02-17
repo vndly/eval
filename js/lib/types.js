@@ -1,30 +1,30 @@
-if (!Number.prototype.value)
+if (!Number.prototype.eval)
 {
-	Number.prototype.value = function()
+	Number.prototype.eval = function()
 	{
 		return this.valueOf()
 	}
 }
 
-if (!Boolean.prototype.value)
+if (!Boolean.prototype.eval)
 {
-	Boolean.prototype.value = function()
+	Boolean.prototype.eval = function()
 	{
 		return this.valueOf()
 	}
 }
 
-if (!String.prototype.value)
+if (!String.prototype.eval)
 {
-	String.prototype.value = function()
+	String.prototype.eval = function()
 	{
 		return this.valueOf()
 	}
 }
 
-if (!Array.prototype.value)
+if (!Array.prototype.eval)
 {
-	Array.prototype.value = function()
+	Array.prototype.eval = function()
 	{
 		return this.valueOf()
 	}

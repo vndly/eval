@@ -1,7 +1,7 @@
 function If(a, b, c)
 {
-	this.value = function()
+	this.eval = function()
 	{
-		return a.value() ? b.value() : c.value()
+		return a.eval() ? b.eval() : c.eval()
 	}
 }

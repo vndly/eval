@@ -45,14 +45,14 @@
 			function run()
 			{
 				var result = new Factorial(5)
-				var value = result.value()
+				var value = result.eval()
 				document.write(value)
 				console.log(value)
 			}
 
 			function Factorial(n)
 			{
-				this.value = function()
+				this.eval = function()
 				{
 					return new If(new Equal(n,
 											0),
@@ -62,7 +62,7 @@
 										  						1)
 										  )
 								  )
-					).value()
+					).eval()
 				}
 			}
 
