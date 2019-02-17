@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Test</title>
+        <script type="text/javascript" charset="UTF-8" src="../lib/bool.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="../lib/comp.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="../lib/cond.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="../lib/func.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="../lib/list.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="../lib/math.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="../lib/types.js"></script>
+		<script type="text/javascript">
+
+			function run()
+			{
+				math()
+				list()
+			}
+
+			function math()
+			{
+			    console.log('Math')
+
+			    var mul = new Mul(4, 8)
+				check(mul, 32)
+
+				var sub = new Sub(4, 8)
+				check(sub, -4)
+
+				console.log('')
+			}
+
+			function list()
+			{
+			    console.log('List')
+
+                var length = new Length([1, 2, 3])
+				check(length, 3)
+
+			    var head = new Head([1, 2, 3])
+				check(head, 1)
+
+				var tail = new Tail([1, 2, 3])
+				check(tail, [2, 3])
+
+                /*
+
+                @Test
+                public void append()
+                {
+                    Append append = new Append<>(new Num(1), new Seq<>(new Num(2), new Num(3)));
+
+                    //assertArrayEquals(new Number[] {1d, 2d, 3d}, append.eval());
+                }
+                */
+
+                console.log('')
+			}
+
+			function check(expression, expected)
+			{
+			    var value  = expression.value()
+
+			    if (equal(value, expected))
+			    {
+			        console.log(true)
+                }
+                else
+                {
+                    console.error(value, expected)
+                }
+			}
+
+			function equal(actual, expected)
+			{
+			    if (Array.isArray(actual))
+			    {
+			        return actual.equals(expected)
+			    }
+			    else
+			    {
+			        return actual === expected
+			    }
+			}
+
+		</script>
+	</head>
+	<body onload="run()">
+	</body>
+</html>
