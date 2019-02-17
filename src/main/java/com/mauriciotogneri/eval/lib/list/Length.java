@@ -1,12 +1,13 @@
 package com.mauriciotogneri.eval.lib.list;
 
 import com.mauriciotogneri.eval.lib.Expression;
+import com.mauriciotogneri.eval.types.Seq;
 
-public class Length<T> implements Expression<Number>
+public class Length implements Expression<Number>
 {
-    private final Expression<T>[] l;
+    private final Seq<?, ?> l;
 
-    public Length(Expression<T>[] l)
+    public Length(Seq<?, ?> l)
     {
         this.l = l;
     }
@@ -14,6 +15,6 @@ public class Length<T> implements Expression<Number>
     @Override
     public Number eval()
     {
-        return l.length;
+        return l.size();
     }
 }

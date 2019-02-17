@@ -1,32 +1,33 @@
 package com.mauriciotogneri.eval.lib.list;
 
 import com.mauriciotogneri.eval.lib.Expression;
+import com.mauriciotogneri.eval.types.Seq;
 
-public class Tail<T> implements Expression<T[]>
+public class Tail<R, T extends Expression<R>> implements Expression<R[]>
 {
-    private final Expression<T>[] l;
+    private final Seq<R, T> s;
 
-    public Tail(Expression<T>[] l)
+    public Tail(Seq<R, T> s)
     {
-        this.l = l;
+        this.s = s;
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public T[] eval()
+    public R[] eval()
     {
-        if (l.length == 0)
+        if (s.empty())
         {
             throw new RuntimeException("Cannot get tail of empty list");
         }
 
-        Object[] result = new Object[l.length - 1];
+        Object[] result = new Object[s.size() - 1];
 
-        for (int i = 1; i < l.length; i++)
+        for (int i = 1; i < s.size(); i++)
         {
-            result[i - 1] = l[i].eval();
+            result[i - 1] = s.get(i).eval();
         }
 
-        return (T[]) result;
+        return (R[]) result;
     }
 }

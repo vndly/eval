@@ -1,24 +1,25 @@
 package com.mauriciotogneri.eval.lib.list;
 
 import com.mauriciotogneri.eval.lib.Expression;
+import com.mauriciotogneri.eval.types.Seq;
 
-public class Head<T> implements Expression<T>
+public class Head<R, T extends Expression<R>> implements Expression<R>
 {
-    private final Expression<T>[] l;
+    private final Seq<R, T> s;
 
-    public Head(Expression<T>[] l)
+    public Head(Seq<R, T> s)
     {
-        this.l = l;
+        this.s = s;
     }
 
     @Override
-    public T eval()
+    public R eval()
     {
-        if (l.length == 0)
+        if (s.empty())
         {
             throw new RuntimeException("Cannot get head of empty list");
         }
 
-        return l[0].eval();
+        return s.get(0).eval();
     }
 }

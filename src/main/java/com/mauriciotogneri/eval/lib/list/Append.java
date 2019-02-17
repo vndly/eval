@@ -1,35 +1,36 @@
 package com.mauriciotogneri.eval.lib.list;
 
 import com.mauriciotogneri.eval.lib.Expression;
+import com.mauriciotogneri.eval.types.Seq;
 
-public class Append<T> implements Expression<T[]>
+public class Append<R, T extends Expression<R>> implements Expression<R[]>
 {
-    private final Expression<T> e;
-    private final Expression<T>[] l;
+    private final T e;
+    private final Seq<R, T> s;
 
-    public Append(Expression<T> e, Expression<T>[] l)
+    public Append(T e, Seq<R, T> s)
     {
         this.e = e;
-        this.l = l;
+        this.s = s;
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public T[] eval()
+    public R[] eval()
     {
-        if (l.length == 0)
+        if (s.empty())
         {
             throw new RuntimeException("Cannot get head of empty list");
         }
 
-        Object[] result = new Object[l.length + 1];
+        Object[] result = new Object[s.size() + 1];
         result[0] = e.eval();
 
-        for (int i = 0; i < l.length; i++)
+        for (int i = 0; i < s.size(); i++)
         {
-            result[i + 1] = l[i].eval();
+            result[i + 1] = s.get(i).eval();
         }
 
-        return (T[]) result;
+        return (R[]) result;
     }
 }
