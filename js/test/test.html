@@ -19,6 +19,7 @@
 				func()
 				list()
 				math()
+				custom()
 			}
 
 			function bool()
@@ -130,6 +131,34 @@
 				check(mod, 4)
 
 				console.log('')
+			}
+
+			// ================================================================================== \\
+
+			function custom()
+			{
+			    console.log('Custom')
+
+                var factorial = new Factorial(5)
+				check(factorial, 120)
+
+				console.log('')
+			}
+
+            function Factorial(n)
+			{
+				this.eval = function()
+				{
+					return new If(new Equal(n,
+											0),
+								  1,
+		                    	  new Mul(n,
+										  new Factorial(new Sub(n,
+										  						1)
+										  )
+								  )
+					).eval()
+				}
 			}
 
 			// ================================================================================== \\
