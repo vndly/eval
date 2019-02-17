@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Test</title>
-        <script type="text/javascript" charset="UTF-8" src="../lib/bool.js"></script>
-        <script type="text/javascript" charset="UTF-8" src="../lib/comp.js"></script>
-        <script type="text/javascript" charset="UTF-8" src="../lib/cond.js"></script>
-        <script type="text/javascript" charset="UTF-8" src="../lib/func.js"></script>
-        <script type="text/javascript" charset="UTF-8" src="../lib/list.js"></script>
-        <script type="text/javascript" charset="UTF-8" src="../lib/math.js"></script>
-        <script type="text/javascript" charset="UTF-8" src="../lib/types.js"></script>
-		<script type="text/javascript">
+<head>
+    <title>Test</title>
+    <script type="text/javascript" charset="UTF-8" src="../lib/bool.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="../lib/comp.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="../lib/cond.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="../lib/func.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="../lib/list.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="../lib/math.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="../lib/types.js"></script>
+    <script type="text/javascript">
 
 			function run()
 			{
@@ -96,8 +96,11 @@
 				var tail = new Tail([1, 2, 3])
 				check(tail, [2, 3])
 
-				var append = new Append(1, [2, 3])
-				check(append, [1, 2, 3])
+				var appendFirst = new AppendFirst(1, [2, 3])
+				check(appendFirst, [1, 2, 3])
+
+				var appendLast = new AppendLast(3, [1, 2])
+				check(appendLast, [1, 2, 3])
 
                 console.log('')
 			}
@@ -142,6 +145,9 @@
                 var factorial = new Factorial(5)
 				check(factorial, 120)
 
+				var fibonacci = new Fibonacci(4)
+				check(fibonacci, [1, 1, 2, 3, 5])
+
 				console.log('')
 			}
 
@@ -157,6 +163,86 @@
 										  						1)
 										  )
 								  )
+					).eval()
+				}
+			}
+
+			function Fibonacci(limit)
+			{
+				this.eval = function()
+				{
+					return new Fibo(0,
+                                    limit,
+                                    []
+                    ).eval()
+				}
+			}
+
+            /*
+            ? >= index limit list
+            	? = 0 index fibo 1 limit [ 1 ]
+            		? = 1 index fibo 2 limit [ 1 1 ]
+            			fibo ++ index limit + + @ - index 1 list @ - index 2 list list
+            */
+
+			function Fibo(index, limit, list)
+			{
+				this.eval = function()
+				{
+					return new If(new GreaterEqual(index, limit),
+					              list,
+					              new FiboCase0(index, limit, list)
+					).eval()
+
+					/*return new If(new GreaterEqual(index,
+					                               limit),
+					              list,
+					              new If(new Equal(index,
+					                               0),
+					                     new Fibo(1,
+					                              limit,
+					                              [1]),
+					                     new If(new Equal(index,
+					                     				  1),
+					                            new Fibo(2,
+					                            		 limit,
+					                            		 [1, 1]),
+					                     		new Fibo(new Inc(index),
+					                     				 limit,
+					                     				 new AppendLast('x', list))))
+					).eval()*/
+				}
+			}
+
+			function FiboCase0(index, limit, list)
+			{
+				this.eval = function()
+				{
+					return new If(new Equal(index, 0),
+			                      new Fibo(1, limit, [1]),
+			                      new FiboCase1(index, limit, list)
+					).eval()
+				}
+			}
+
+			function FiboCase1(index, limit, list)
+			{
+				this.eval = function()
+				{
+					return new If(new Equal(index, 1),
+	                              new Fibo(2, limit, [1, 1]),
+	                      		  new FiboCaseRest(index, limit, list)
+					).eval()
+				}
+			}
+
+			function FiboCaseRest(index, limit, list)
+			{
+				this.eval = function()
+				{
+					return new Fibo(new Inc(index),
+                  			 	    limit,
+                  				    new AppendLast('x', list)
 					).eval()
 				}
 			}
@@ -189,8 +275,9 @@
 			    }
 			}
 
-		</script>
-	</head>
-	<body onload="run()">
-	</body>
+
+    </script>
+</head>
+<body onload="run()">
+</body>
 </html>

@@ -2,7 +2,7 @@ function Length(l)
 {
 	this.eval = function()
 	{
-		return l.length
+		return l.eval().length
 	}
 }
 
@@ -10,7 +10,7 @@ function Head(l)
 {
 	this.eval = function()
 	{
-		return l[0].eval()
+		return l.eval()[0].eval()
 	}
 }
 
@@ -18,21 +18,41 @@ function Tail(l)
 {
 	this.eval = function()
 	{
-		return l.slice(1).eval()
+		return l.eval().slice(1).eval()
 	}
 }
 
-function Append(e, l)
+function AppendFirst(e, l)
 {
 	this.eval = function()
 	{
 		var result = []
 		result.push(e.eval())
 
-		for (var i = 0; i < l.length; i++)
+		var list = l.eval()
+
+		for (var i = 0; i < list.length; i++)
         {
-            result.push(l[i].eval())
+            result.push(list[i].eval())
         }
+
+		return result
+	}
+}
+
+function AppendLast(e, l)
+{
+	this.eval = function()
+	{
+		var result = []
+		var list = l.eval()
+
+		for (var i = 0; i < list.length; i++)
+        {
+            result.push(list[i].eval())
+        }
+
+        result.push(e.eval())
 
 		return result
 	}
