@@ -13,23 +13,11 @@
 
 			function run()
 			{
+			    bool()
 				comp()
-				bool()
-				math()
+				cond()
 				list()
-			}
-
-			function math()
-			{
-			    console.log('Math')
-
-			    var mul = new Mul(4, 8)
-				check(mul, 32)
-
-				var sub = new Sub(4, 8)
-				check(sub, -4)
-
-				console.log('')
+				math()
 			}
 
 			function bool()
@@ -73,6 +61,16 @@
 				console.log('')
 			}
 
+			function cond()
+			{
+			    console.log('Cond')
+
+			    var ifThenElse = new If(false, 3, 4)
+				check(ifThenElse, 4)
+
+				console.log('')
+			}
+
 			function list()
 			{
 			    console.log('List')
@@ -91,6 +89,39 @@
 
                 console.log('')
 			}
+
+			function math()
+			{
+			    console.log('Math')
+
+                var add = new Add(4, 8)
+				check(add, 12)
+
+				var sub = new Sub(4, 8)
+				check(sub, -4)
+
+			    var mul = new Mul(4, 8)
+				check(mul, 32)
+
+                var div = new Div(4, 8)
+				check(div, 0.5)
+
+				var inc = new Inc(4)
+				check(inc, 5)
+
+				var dec = new Dec(4)
+				check(dec, 3)
+
+                var pow = new Pow(4, 8)
+				check(pow, 65536)
+
+                var mod = new Mod(4, 8)
+				check(mod, 4)
+
+				console.log('')
+			}
+
+			// ================================================================================== \\
 
 			function check(expression, expected)
 			{
