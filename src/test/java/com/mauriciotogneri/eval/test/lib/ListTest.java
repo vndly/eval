@@ -1,4 +1,4 @@
-package com.mauriciotogneri.eval.test;
+package com.mauriciotogneri.eval.test.lib;
 
 import com.mauriciotogneri.eval.lib.list.Tail;
 import com.mauriciotogneri.eval.types.Num;
@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
 
-public class TailTest
+public class ListTest
 {
     @Test
     public void tail()
