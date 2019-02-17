@@ -57,3 +57,11 @@ function AppendLast(e, l)
 		return result
 	}
 }
+
+function ElementAt(e, l)
+{
+	this.eval = function()
+	{
+		return l.eval()[e.eval()].eval()
+	}
+}

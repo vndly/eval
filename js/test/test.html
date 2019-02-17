@@ -145,8 +145,8 @@
                 var factorial = new Factorial(5)
 				check(factorial, 120)
 
-				var fibonacci = new Fibonacci(4)
-				check(fibonacci, [1, 1, 2, 3, 5])
+				var fibonacci = new Fibonacci(10)
+				check(fibonacci, [1, 1, 2, 3, 5, 8, 13, 21, 34, 55])
 
 				console.log('')
 			}
@@ -178,13 +178,6 @@
 				}
 			}
 
-            /*
-            ? >= index limit list
-            	? = 0 index fibo 1 limit [ 1 ]
-            		? = 1 index fibo 2 limit [ 1 1 ]
-            			fibo ++ index limit + + @ - index 1 list @ - index 2 list list
-            */
-
 			function Fibo(index, limit, list)
 			{
 				this.eval = function()
@@ -193,24 +186,6 @@
 					              list,
 					              new FiboCase0(index, limit, list)
 					).eval()
-
-					/*return new If(new GreaterEqual(index,
-					                               limit),
-					              list,
-					              new If(new Equal(index,
-					                               0),
-					                     new Fibo(1,
-					                              limit,
-					                              [1]),
-					                     new If(new Equal(index,
-					                     				  1),
-					                            new Fibo(2,
-					                            		 limit,
-					                            		 [1, 1]),
-					                     		new Fibo(new Inc(index),
-					                     				 limit,
-					                     				 new AppendLast('x', list))))
-					).eval()*/
 				}
 			}
 
@@ -242,8 +217,26 @@
 				{
 					return new Fibo(new Inc(index),
                   			 	    limit,
-                  				    new AppendLast('x', list)
+                  				    new AppendLast(new Add(new FiboLast1(index, list),
+                  				    					   new FiboLast2(index, list)),
+                  				    			   list)
 					).eval()
+				}
+			}
+
+			function FiboLast1(index, list)
+			{
+				this.eval = function()
+				{
+					return new ElementAt(new Sub(index, 1), list).eval()
+				}
+			}
+
+			function FiboLast2(index, list)
+			{
+				this.eval = function()
+				{
+					return new ElementAt(new Sub(index, 2), list).eval()
 				}
 			}
 
