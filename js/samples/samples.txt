@@ -1,0 +1,49 @@
+Todo:
+    Generics	T Element([T] l Number i) = ...
+    Tuples		Person: {Number Boolean}
+    Functions	[B] Map([A] a <A B> f) = ...
+
+====================================================================================================
+
+Number Factorial(Number n) = If(Equal(n 0) 1 Mul(n Factorial(Subtract(n 1))))
+
+====================================================================================================
+
+DIR=Exec("dirname $0")
+
+PACKAGE="com.some.package"
+
+TRACK_INTERNAL="internal"
+TRACK_ALPHA="alpha"
+TRACK_BETA="beta"
+
+Publish(track)
+{
+    APK_PATH=$DIR/../app/build/outputs/apk/prod/release/app-prod-release.apk
+
+    # build apk
+    Exec("$DIR/../gradlew assembleRelease")
+
+    # publish apk
+    Exec($DIR/../gradlew publish -PpackageName="${PACKAGE}" -PapkPath="${APK_PATH}" -PtrackName=track)
+
+    # send notification
+    VERSION_NAME="$DIR/../gradlew versionName | grep versionName="
+    VERSION_CODE="$DIR/../gradlew versionCode | grep versionCode="
+    Exec($DIR/notification_newVersion.sh $VERSION_NAME $VERSION_CODE)
+}
+
+Publish(TRACK_INTERNAL)
+
+====================================================================================================
+
+DIR=Exec("dirname $0")
+PROJECT_ID="awesome-project"
+TOKEN=Exec("cat $DIR/../ignored/localization_token.txt")
+BASE_DIR="$DIR/../app/src/main/res-localization"
+
+LOCALES=["$BASE_DIR/values/strings.xml", "$BASE_DIR/values-es/strings.xml"]
+
+Map(LOCALES, Process)
+
+Process(l) = Exec("wget "https://$PROJECT_ID.firebaseapp.com/api/export/$locale/android?token=$TOKEN" -O l")
